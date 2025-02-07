@@ -1,11 +1,20 @@
-import { REST, Routes } from "discord.js"
+import { REST, Routes, SlashCommandBuilder } from "discord.js"
 
 const commands = [
-  {
-    name: "vidas",
-    description: "Muestra la lista de jugadores y sus vidas.",
-  },
-];
+  new SlashCommandBuilder()
+    .setName('vidas')
+    .setDescription('Muestra o modifica las vidas de los jugadores')
+    .addStringOption(option =>
+      option.setName("nombre")
+        .setDescription("Nombre del jugador")
+        .setRequired(false)
+    )
+    .addNumberOption(option =>
+      option.setName("vida")
+        .setDescription("Vidas perdidas o ganadas")
+        .setRequired(false)
+    )
+].map(command => command.toJSON())
 
 async function setCommands() {
   const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN)

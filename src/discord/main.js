@@ -1,4 +1,5 @@
-import { Client, GatewayIntentBits } from 'discord.js'
+import { Client, GatewayIntentBits, EmbedBuilder } from 'discord.js'
+import Player from '../models/player.js'
 
 
 const client = new Client({
@@ -16,8 +17,29 @@ function runBot() {
 
   client.on("interactionCreate", async interaction => {
     if (!interaction.isChatInputCommand()) return
+    const players = await Player.find()
     if (interaction.commandName === "vidas") {
-      await interaction.reply("Mensage desde el servidor")
+      if (!interaction.options.getString("nombre")) {
+
+        const message = new EmbedBuilder()
+          .setTitle("Jugadores")
+          .setDescription(players.map(j => `- **${j.name}**: \t${j.lives} vidas`).join("\n"))
+
+        await interaction.reply({ embeds: [message] })
+      } else {
+        const nombre = interaction.options.getString("nombre")
+        const player = await Player.findOne({ name: nombre })
+        const number = interaction.options.getNumber("vida")
+        if (number < 0) {
+          player.lives += number
+          player.save()
+        }
+        if (number > 0) {
+          player.lives += number
+          player.save()
+        }
+        await interaction.reply(`${nombre} tiene: ${player.lives}`)
+      }
     }
   })
 }
