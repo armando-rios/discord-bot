@@ -25,15 +25,21 @@ function runBot() {
           const randomID = Math.floor(Math.random() * 1025) + 1
           const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomID}`)
           const data = await response.json()
-          return data.sprites.other['official-artwork'].front_deafult
+          return data.sprites.other['official-artwork'].front_default
         }
 
+        const image = await pokeImg()
+
+        const desc = players.map(j => `- **${j.name}**: \t${j.lives} vidas`)
+        desc.push("\n**Web Site**: https://pokelocke.onrender.com");
+
+
         const message = new EmbedBuilder()
-          .setTitle("Jugadores")
-          .setDescription(players.map(j => `- **${j.name}**: \t${j.lives} vidas`).join("\n"))
-          .setImage(pokeImg())
+          .setURL("https://pokelocke.onrender.com")
+          .setTitle("Lista de Jugadores")
+          .setDescription(desc.join("\n"))
           .setColor('Purple')
-          .addFields({ name: "Más información", value: "[Here ->](https://pokelocke.onrender.com)", inline: true });
+          .setImage(image)
 
         await interaction.reply({ embeds: [message] })
       } else {
