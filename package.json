@@ -1,0 +1,11 @@
+{
+  "name": "bot-discord",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.17.3",
+    "express": "^4.21.2",
+    "mongoose": "^8.10.0"
+  }
+}
