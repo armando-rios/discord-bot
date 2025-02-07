@@ -21,9 +21,17 @@ function runBot() {
     if (interaction.commandName === "vidas") {
       if (!interaction.options.getString("nombre")) {
 
+        const pokeImg = async () => {
+          const randomID = Math.floor(Math.random() * 1025) + 1
+          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomID}`)
+          const data = await response.json()
+          return data.sprites.other['official-artwork'].front_deafult
+        }
+
         const message = new EmbedBuilder()
           .setTitle("Jugadores")
           .setDescription(players.map(j => `- **${j.name}**: \t${j.lives} vidas`).join("\n"))
+          .setImage(pokeImg)
           .setColor('Purple')
           .addFields({ name: "Más información", value: "[Here ->](https://pokelocke.onrender.com)", inline: true });
 
