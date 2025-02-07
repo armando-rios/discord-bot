@@ -1,8 +1,12 @@
 {
   "name": "bot-discord",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "dev": "node --watch --env-file=.env server.js"
+  },
   "dependencies": {
     "discord.js": "^14.17.3",
     "express": "^4.21.2",

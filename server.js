@@ -1,6 +1,6 @@
-const express = require("express")
-const connectDB = require("./db")
-const runBot = require('./src/discord/main.js')
+import express from "express"
+import connectDB from "./db.js"
+import runBot from './src/discord/main.js'
 const app = express()
 const PORT = 3000
 

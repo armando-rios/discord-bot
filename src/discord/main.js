@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits } = require('discord.js');
+import { Client, GatewayIntentBits } from 'discord.js'
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds]
@@ -12,4 +12,4 @@ function runBot() {
   client.login(process.env.DISCORD_TOKEN)
 }
 
-module.exports = runBot
+export default runBot
