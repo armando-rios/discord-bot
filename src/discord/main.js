@@ -24,6 +24,8 @@ function runBot() {
         const message = new EmbedBuilder()
           .setTitle("Jugadores")
           .setDescription(players.map(j => `- **${j.name}**: \t${j.lives} vidas`).join("\n"))
+          .setURL("https://discord-bot-ar.onrender.com")
+          .setColor('Purple')
 
         await interaction.reply({ embeds: [message] })
       } else {
