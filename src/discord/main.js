@@ -31,7 +31,7 @@ function runBot() {
         const message = new EmbedBuilder()
           .setTitle("Jugadores")
           .setDescription(players.map(j => `- **${j.name}**: \t${j.lives} vidas`).join("\n"))
-          .setImage(pokeImg)
+          .setImage(pokeImg())
           .setColor('Purple')
           .addFields({ name: "Más información", value: "[Here ->](https://pokelocke.onrender.com)", inline: true });
 

@@ -23,5 +23,15 @@ function actualizarLista(vidas) {
   });
 }
 
-// setInterval(obtenerVidas, 5000); // Refrescar cada 5 segundos
+const pokeImg = async () => {
+  const randomID = Math.floor(Math.random() * 1025) + 1
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomID}`)
+  const data = await response.json()
+  const image = data.sprites.other['official-artwork'].front_default
+  console.log(image)
+  document.querySelector('#pokemon').innerHTML = `<img src=${image}>`
+}
+
+pokeImg()
+
 obtenerVidas();
