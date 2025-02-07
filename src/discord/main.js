@@ -25,7 +25,7 @@ function runBot() {
           .setTitle("Jugadores")
           .setDescription(players.map(j => `- **${j.name}**: \t${j.lives} vidas`).join("\n"))
           .setColor('Purple')
-          .addFields({ name: "Más información", value: "[Here ->](https:discord-bot-ar.onrender.com)", inline: false });
+          .addFields({ name: "Más información", value: "[Here ->](https://pokelocke.onrender.com)", inline: true });
 
         await interaction.reply({ embeds: [message] })
       } else {
