@@ -16,6 +16,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Cargar comandos y eventos
 client.loadEvents(path.join(__dirname, "events"));
+client.loadCommands(path.join(__dirname, "commands"));
 
 // Iniciar la aplicacion
 client.login(process.env.TOKEN)
