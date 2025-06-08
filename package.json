@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch --env-file=.env server.js"
+    "dev": "node --watch --env-file=.env src/index.js"
   },
   "dependencies": {
     "discord.js": "^14.17.3",
